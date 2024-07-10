@@ -1,3 +1,6 @@
+@import url(./colors.css);
+@import url(./app.css);
+
 /* reset styles */
 * {
     padding: 0;
