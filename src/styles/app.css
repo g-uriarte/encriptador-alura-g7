@@ -9,12 +9,18 @@
     height: 48px;
 }
 
+.exclamation-circle {
+    width: 16px;
+    height: 16px;
+}
+
 .main-container {
     display: grid;
     width: 100%;
     height: 100%;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 96px 1.2fr 0.7fr 0.7fr;
+    gap: 10px;
+    grid-template-rows: 96px 1.2fr 0.5fr 0.7fr;
     grid-auto-flow: row;
     grid-template-areas:
         "header header"
@@ -39,23 +45,31 @@
 }
 
 #text-to-encript {
+    --text-size: 25px;
     border: none;
     border-radius: 10px;
     width: 100%;
     height: 100%;
     padding-top: 15px;
     padding-left: 15px;
+    font-size: var(--text-size);
     overflow: auto;
     outline: none;
-    -webkit-box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.1);
-    -moz-box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.1);
-    box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.1);
+    -webkit-box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.1);
     resize: none;
+}
+
+#text-to-encript::placeholder {
+    color: var(--dark-blue-300);
+    font-size: var(--text-size);
 }
 
 .content {
     display: flex;
-    padding: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
     justify-content: space-between;
     flex-direction: column;
     gap: 10px;
@@ -63,17 +77,54 @@
 }
 
 .info-text-to-encript {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
+.info-text-to-encript p {
     font-size: small;
+    color: var(--gray-400);
 }
 
 .actions {
-    background-color: yellow;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 15px;
+    padding-right: 15px;
+    align-items: center;
+    gap: 20px;
     grid-area: actions;
 }
 
 .solution {
     background-color: rgba(254, 254, 139, 0.659);
     grid-area: solution;
+}
+
+.button {
+    --button-text-color: var(--white);
+    --button-bg-color: var(--dark-blue-300);
+    --button-color-hover: var(--dark-blue-400);
+    background-color: var(--button-bg-color);
+    color: var(--button-text-color);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.button-encript {
+    border: none;
+}
+
+.button-decript {
+    --button-text-color: var(--dark-blue-300);
+    --button-bg-color: var(--light-blue-200);
+    --button-color-hover: var(--dark-blue-400);
+    border: 1px solid var(--dark-blue-300);
+    border-style: inset;
 }
 
 @media (min-width: 768px) {
