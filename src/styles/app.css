@@ -4,6 +4,10 @@
     background-color: var(--light-blue-100);
 }
 
+.muneco-no-messages {
+    display: none;
+}
+
 .alura-icon {
     width: 32px;
     height: 48px;
@@ -191,6 +195,20 @@
             "content solution"
             "actions solution"
             "actions solution";
+        column-gap: 40px;
+    }
+
+    .muneco-no-messages {
+        display: block;
+    }
+
+    .solution {
+        justify-content: flex-start;
+        margin-top: 0;
+    }
+    .result-container {
+        height: 90%;
+        margin-top: 45px;
     }
 }
 
@@ -198,4 +216,5 @@
     .main-container {
         grid-template-columns: 2fr 400px;
     }
+    
 }
