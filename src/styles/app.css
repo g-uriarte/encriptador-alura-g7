@@ -158,7 +158,6 @@
     --button-bg-color: var(--light-blue-200);
     --button-color-hover: var(--dark-blue-400);
     border: 1px solid var(--dark-blue-300);
-    border-style: inset;
 }
 
 @media (min-width: 768px) {
