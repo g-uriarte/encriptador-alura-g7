@@ -135,6 +135,13 @@
     gap: 20px;
 }
 
+#result-text {
+    font-size: 32px;
+    max-height: 50px;
+    overflow: hidden;
+    overflow-y: auto;
+}
+
 .result_title {
     text-align: center;
     font-size: 24px;
@@ -177,7 +184,7 @@
 @media (min-width: 768px) {
     .main-container {
         grid-template-columns: 1fr 1fr;
-        grid-template-rows: 96px 1.6fr 0.2fr 0.5fr;
+        grid-template-rows: 96px 1.6fr 0.2fr 0.7fr;
         grid-auto-flow: row;
         grid-template-areas:
             "header header"
@@ -206,6 +213,10 @@
         column-gap: 40px;
         --padding-left: 80px;
         --padding-right: 30px;
+    }
+
+    #result-text {
+        max-height: 100%;
     }
 
     .content {
