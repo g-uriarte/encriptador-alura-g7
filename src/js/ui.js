@@ -55,7 +55,7 @@ const ui = () => {
         resultContainer.style['width'] = '100%';
         resultContainer.style['height'] = '100%';
         resultContainer.style['justify-content'] = 'space-between';
-        resultContainer.style['padding'] = '30px 20px 25px 20px';
+        resultContainer.style['padding'] = '15px 20px 25px 20px';
         resultContainer.style['align-items'] = 'start';
         
         resultContainer.insertAdjacentHTML('beforeend', `<p id='result-text' ></p>`)
