@@ -1,6 +1,7 @@
 @import url(./reset.css);
 @import url(./colors.css);
 @import url(./app.css);
+@import url(./toast.css);
 
 @font-face {
     font-family: 'Inter';

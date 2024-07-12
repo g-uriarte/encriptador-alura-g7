@@ -1,5 +1,6 @@
 import { UI } from "./ui.js";
 import { challengeEncryptionMode } from "./encriptador.js";
+import { Toast } from './toast.js'
 
 /**
  *
@@ -46,7 +47,7 @@ const app = (ui, encryptionMode) => {
 		const text = ui.getTextAreaValue().trim();
 		const { error, messages } = validateText(text);
 		if (error) {
-			messages.forEach((error) => console.log(error));
+			Toast.create(messages.map(message => `<p style='font-size: 15px'>${message}</p>`).join(''), 'error')
 		} else {
 			const resultText = type === 'encript' ? encryptionMode.encript(text) : encryptionMode.decript(text);
 			if (!ui.hasInteraction()) {
