@@ -22,10 +22,10 @@ const toast = () => {
 		toastElement.classList.add(toastType[type]);
 		await setTimeoutAsync((res, rej) => {
             toastElement.classList.remove("toast-visible");
-            toastElement.classList.remove(toastType[type]);
             res()
         }, 2000)
         await waitAsync(500);
+        toastElement.classList.remove(toastType[type]);
 		toastElement.innerHTML = "";
 	};
 

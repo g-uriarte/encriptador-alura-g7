@@ -13,7 +13,7 @@
     position: relative;
     border-radius: 10px;
     box-shadow: 0px 24px 32px -8px rgba(0, 0, 0, 0.08);
-    width: 250px;
+    width: 230px;
     min-height: var(--height);
     left: 0;
     top: calc(var(--height) * -2);
@@ -35,8 +35,16 @@
 
 .toast-error {
     border-color: rgba(122, 63, 63, 0.604);
+    background-color: rgba(255, 215, 215, 0.413);
 }
 
 .toast-info {
     border-color: var(--dark-blue-100);
+    background-color: rgb(234, 244, 254);
+}
+
+@media (min-width: 768px) {
+    .toast {
+        width: 350px;
+    }
 }
