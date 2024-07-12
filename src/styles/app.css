@@ -1,6 +1,6 @@
 #app {
     width: 100vw;
-    height: 100dvh;
+    height: 100vh;
     background-color: var(--light-blue-100);
 }
 
@@ -110,7 +110,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 20px;
     grid-area: solution;
 }
 
@@ -164,12 +163,11 @@
     background-color: var(--button-bg-color-hover);
 }
 
-.button-encript {
+.button-dark-blue {
     border: none;
 }
 
-
-.button-decript {
+.button-light-blue {
     --button-text-color: var(--dark-blue-300);
     --button-bg-color: transparent;
     --button-bg-color-hover: var(--light-blue-200);

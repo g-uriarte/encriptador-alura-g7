@@ -1,55 +1,14 @@
 /**
- * @type {Map<string,string>}
- */
-const characterToEncriptedText = new Map();
-
-characterToEncriptedText.set('a', 'ai');
-characterToEncriptedText.set('e', 'enter');
-characterToEncriptedText.set('i', 'imes');
-characterToEncriptedText.set('o', 'ober');
-characterToEncriptedText.set('u', 'ufat');
-
-/**
- * @type {Map<string,string>}
- */
-const encriptedTextToCharacter = new Map();
-
-encriptedTextToCharacter.set('ai', 'a');
-encriptedTextToCharacter.set('enter', 'e');
-encriptedTextToCharacter.set('imes', 'i');
-encriptedTextToCharacter.set('ober', 'o');
-encriptedTextToCharacter.set('ufat', 'u');
-
-/**
- * it's convert the character into asociated text.
- * 
- * @param {string} character The letter can only be vocals in lowercase
- */
-const convertCharacterToEncriptedText = (character) => {
-    if (characterToEncriptedText.has(character)) {
-        return characterToEncriptedText.get(character);
-    }
-    throw new Error(`No se puede encriptar la letra ${character}.`);
-}
-
-/**
- * it's convert encripted text into asociated character.
- * @param {string} encriptedText the encripted text
- */
-const convertEncriptedTextToCharacter = (encriptedText) => {
-    if (encriptedTextToCharacter.has(encriptedText)) {
-        return encriptedTextToCharacter.get(encriptedText);
-    }
-    throw new Error(`No se puede desencriptar la letra`);
-}
-
-/**
  * Encrypts the text and returns it
  * @param {string} text 
  */
 const encript = (text) => {
-    let textEncripted = '';
-
+    let textEncripted = text
+        .replace(/a/g, 'ai')
+        .replace(/e/g, 'enter')
+        .replace(/i/g, 'imes')
+        .replace(/o/g, 'ober')
+        .replace(/u/g, 'ufat');
     return textEncripted;
 }
 
@@ -59,9 +18,17 @@ const encript = (text) => {
  * @param {string} text 
  */
 const decript = (text) => {
-    let textDecripted = '';
-
+    let textDecripted = text
+        .replace(/ai/g, 'a')
+        .replace(/enter/g, 'e')
+        .replace(/imes/g, 'i')
+        .replace(/ober/g, 'o')
+        .replace(/ufat/g, 'u');
     return textDecripted;
 }
 
-export { encript, decript };
+const challengeEncryptionMode = {
+    encript, decript
+}
+
+export { challengeEncryptionMode };
