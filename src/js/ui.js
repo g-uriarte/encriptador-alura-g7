@@ -21,6 +21,7 @@ const ui = () => {
     const getTextAreaValue = () => textarea.value;
     const getContainerResultText = () => document.querySelector(CONTAINER_RESULT_TEXT)
     const getSectionSolution = () => document.querySelector('.result-container');
+    const getCopyButton = () => document.getElementById('copy');
 
     /**
      * 
@@ -33,6 +34,19 @@ const ui = () => {
         }
     }
     
+    const addEventListenerToCopyButton = () => {
+        getCopyButton().addEventListener('click', () => {
+            const resultText = document.getElementById('result-text');
+            const text = resultText.innerHTML;
+            navigator.clipboard.writeText(text)
+                .then(() => Toast.create('Texto copiado!', 'info'))
+                .catch((e) => {
+                    Toast.create('Error al copiar :(', 'error')
+                    console.error(e);
+                });
+        });
+    }
+
     const updateResponseContainer = () => {
         const section = getSectionSolution()
         const resultContainer = getContainerResultText();
@@ -47,14 +61,7 @@ const ui = () => {
         resultContainer.insertAdjacentHTML('beforeend', `<p id='result-text' ></p>`)
         resultContainer.insertAdjacentHTML('beforeend', `<button id='copy' class='button button-light-blue' >Copiar</button>`)
         
-        const copyButton = document.getElementById('copy');
-        copyButton.addEventListener('click', () => {
-            const resultText = document.getElementById('result-text');
-            const text = resultText.innerHTML;
-            navigator.clipboard.writeText(text)
-                .then(() => Toast.create('Texto copiado!', 'info'))
-                .catch((e) => Toast.create('Error al copiar :(', 'error'));
-        });
+        addEventListenerToCopyButton();
     }
 
     return {
