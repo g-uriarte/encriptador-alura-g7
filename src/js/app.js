@@ -7,7 +7,6 @@ import { challengeEncryptionMode } from "./encriptador.js";
  * @returns
  */
 const app = (ui, encryptionMode) => {
-
 	/**
 	 *
 	 * @param {string} text
@@ -39,39 +38,32 @@ const app = (ui, encryptionMode) => {
 		}
 	};
 
-	const init = () => {
-		ui.buttonEncript.addEventListener("click", () => {
-			const text = ui.getTextAreaValue().trim();
-			const { error, messages } = validateText(text);
-			if (error) {
-				messages.forEach((error) => console.log(error));
-			} else {
-				const encriptedText = encryptionMode.encript(text);
-				if (!ui.hasInteraction()) {
-					console.log('just one time')
-					ui.checkInteraction();
-					ui.updateResponseContainer();
-				}
-				ui.setResponseText(encriptedText);
+	/**
+	 *
+	 * @param {('encript' | 'decript')} type
+	 */
+	const handleAction = (type) => {
+		const text = ui.getTextAreaValue().trim();
+		const { error, messages } = validateText(text);
+		if (error) {
+			messages.forEach((error) => console.log(error));
+		} else {
+			const resultText = type === 'encript' ? encryptionMode.encript(text) : encryptionMode.decript(text);
+			if (!ui.hasInteraction()) {
+				ui.checkInteraction();
+				ui.updateResponseContainer();
 			}
-		});
+			ui.setResponseText(resultText);
+		}
+	};
 
-		ui.buttonDecript.addEventListener("click", () => {
-			console.log("decript");
-			const text = ui.getTextAreaValue().trim();
-			const { error, messages } = validateText(text);
-			if (error) {
-				console.log(messages);
-			} else {
-				const decriptedText = encryptionMode.decript(text);
-				if (!ui.hasInteraction()) {
-					console.log('just one time')
-					ui.checkInteraction();
-					ui.updateResponseContainer();
-				}
-				ui.setResponseText(decriptedText);
-			}
-		});
+	const addEventListener = () => {
+		ui.buttonEncript.addEventListener("click", () => { handleAction('encript'); });
+		ui.buttonDecript.addEventListener("click", () => { handleAction('decript'); });
+	}
+
+	const init = () => {
+		addEventListener();
 	};
 
 	return {
