@@ -144,7 +144,8 @@
 }
 
 #result-text {
-    font-size: 32px;
+    font-size: 24px;
+    color: var(--gray-400);
     max-height: 50px;
     overflow: hidden;
     overflow-y: auto;
