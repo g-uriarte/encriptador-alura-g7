@@ -39,13 +39,22 @@ const encript = (text) => {
  * @param {string} text
  */
 const decript = (text) => {
-	let textDecripted = text
-		.replace(/ai/g, "a")
-		.replace(/enter/g, "e")
-		.replace(/imes/g, "i")
-		.replace(/ober/g, "o")
-		.replace(/ufat/g, "u");
-	return textDecripted;
+	let textDecripted = [];
+	let letter = '';
+	for (let index = 0; index < text.length;) {
+		letter = text[index];
+		if (characterToEncriptedText.has(letter)) {
+			const text = characterToEncriptedText.get(letter);
+			const lengthText = text.length;
+			textDecripted.push(letter);
+			index += lengthText;
+		} else {
+			textDecripted.push(letter);
+			index++;
+		}
+	}
+
+	return textDecripted.join('');
 };
 
 const challengeEncryptionMode = {
