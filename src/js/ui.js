@@ -1,3 +1,4 @@
+import { Toast } from "./toast.js";
 
 const ui = () => {
 
@@ -51,8 +52,8 @@ const ui = () => {
             const resultText = document.getElementById('result-text');
             const text = resultText.innerHTML;
             navigator.clipboard.writeText(text)
-                .then(() => console.log('copied!'))
-                .catch((e) => console.error('copy error', e));
+                .then(() => Toast.create('Texto copiado!', 'info'))
+                .catch((e) => Toast.create('Error al copiar :(', 'error'));
         });
     }
 
