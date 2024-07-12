@@ -1,34 +1,56 @@
 /**
+ * @type {Map<string,string>}
+ */
+const characterToEncriptedText = new Map();
+
+characterToEncriptedText.set("a", "ai");
+characterToEncriptedText.set("e", "enter");
+characterToEncriptedText.set("i", "imes");
+characterToEncriptedText.set("o", "ober");
+characterToEncriptedText.set("u", "ufat");
+
+/**
+ * it's convert the character into asociated text.
+ *
+ * @param {string} character The letter can only be vocals in lowercase
+ */
+const convertCharacterToEncriptedText = (character) => {
+	return characterToEncriptedText.get(character);
+};
+
+/**
  * Encrypts the text and returns it
- * @param {string} text 
+ * @param {string} text
  */
 const encript = (text) => {
-    let textEncripted = text
-        .replace(/a/g, 'ai')
-        .replace(/e/g, 'enter')
-        .replace(/i/g, 'imes')
-        .replace(/o/g, 'ober')
-        .replace(/u/g, 'ufat');
-    return textEncripted;
-}
+	let characters = text.split('');
+	let textEncripted = characters.map((character) => {
+        if (characterToEncriptedText.has(character)) {
+            return convertCharacterToEncriptedText(character)
+        }
+        return character;
+    }).join('');
 
+	return textEncripted;
+};
 
 /**
  * Decrypt the text and return it
- * @param {string} text 
+ * @param {string} text
  */
 const decript = (text) => {
-    let textDecripted = text
-        .replace(/ai/g, 'a')
-        .replace(/enter/g, 'e')
-        .replace(/imes/g, 'i')
-        .replace(/ober/g, 'o')
-        .replace(/ufat/g, 'u');
-    return textDecripted;
-}
+	let textDecripted = text
+		.replace(/ai/g, "a")
+		.replace(/enter/g, "e")
+		.replace(/imes/g, "i")
+		.replace(/ober/g, "o")
+		.replace(/ufat/g, "u");
+	return textDecripted;
+};
 
 const challengeEncryptionMode = {
-    encript, decript
-}
+	encript,
+	decript,
+};
 
 export { challengeEncryptionMode };
