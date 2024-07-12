@@ -64,6 +64,10 @@ const ui = () => {
         addEventListenerToCopyButton();
     }
 
+    const markTextAreaError = () => {
+        textarea.classList.add('input-error');
+    }
+
     return {
         textarea,
         buttonDecript,
@@ -72,7 +76,8 @@ const ui = () => {
         getTextAreaValue,
         hasInteraction,
         checkInteraction,
-        updateResponseContainer
+        updateResponseContainer,
+        markTextAreaError
     }
 }
 

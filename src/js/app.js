@@ -4,7 +4,8 @@ import { Toast } from './toast.js'
 
 /**
  *
- * @param {*} ui
+ * @param {UI} ui
+ * @param {challengeEncryptionMode} encryptionMode 
  * @returns
  */
 const app = (ui, encryptionMode) => {
@@ -47,6 +48,7 @@ const app = (ui, encryptionMode) => {
 		const text = ui.getTextAreaValue().trim();
 		const { error, messages } = validateText(text);
 		if (error) {
+			ui.markTextAreaError();
 			Toast.create(messages.map(message => `<p style='font-size: 15px'>${message}</p>`).join(''), 'error')
 		} else {
 			const resultText = type === 'encript' ? encryptionMode.encript(text) : encryptionMode.decript(text);
@@ -61,6 +63,11 @@ const app = (ui, encryptionMode) => {
 	const addEventListener = () => {
 		ui.buttonEncript.addEventListener("click", () => { handleAction('encript'); });
 		ui.buttonDecript.addEventListener("click", () => { handleAction('decript'); });
+		ui.textarea.addEventListener('input', () => {
+            if (ui.textarea.classList.contains('input-error')) {
+                ui.textarea.classList.remove('input-error');
+            }
+        })
 	}
 
 	const init = () => {
