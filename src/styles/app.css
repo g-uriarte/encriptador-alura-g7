@@ -73,6 +73,8 @@
     resize: none;
 }
 
+
+
 .input-error {
     --border: 1px solid rgba(252, 180, 180, 0.489);
     --border-radius: 10px;
@@ -152,6 +154,13 @@
     overflow: hidden;
     overflow-y: auto;
     word-break: break-word;
+    border: var(--border, 1px solid transparent);
+    background: none;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    outline: none;
+    resize: none;
 }
 
 .result_title {
