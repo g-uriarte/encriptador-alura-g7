@@ -23,7 +23,7 @@ const toast = () => {
 		await setTimeoutAsync((res, rej) => {
             toastElement.classList.remove("toast-visible");
             res()
-        }, 2000)
+        }, 4000)
         await waitAsync(500);
         toastElement.classList.remove(toastType[type]);
 		toastElement.innerHTML = "";
