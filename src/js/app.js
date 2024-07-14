@@ -10,8 +10,8 @@ import { Toast } from './toast.js'
  */
 const app = (ui, encryptionMode) => {
 	/**
-	 *
-	 * @param {string} text
+	 * Validate the input text
+	 * @param {string} text text to validate
 	 */
 	const validateText = (text) => {
 		if (text === '') {
@@ -34,7 +34,7 @@ const app = (ui, encryptionMode) => {
 	};
 
 	/**
-	 *
+	 * Perform the ecnript | decript action
 	 * @param {('encript' | 'decript')} type
 	 */
 	const handleAction = (type) => {
@@ -53,18 +53,14 @@ const app = (ui, encryptionMode) => {
 		}
 	};
 
-	const addEventListener = () => {
+	const addEventListeners = () => {
 		ui.buttonEncript.addEventListener("click", () => { handleAction('encript'); });
 		ui.buttonDecript.addEventListener("click", () => { handleAction('decript'); });
-		ui.textarea.addEventListener('input', () => {
-            if (ui.textarea.classList.contains('input-error')) {
-                ui.textarea.classList.remove('input-error');
-            }
-        })
+		ui.textarea.addEventListener('input', () => { ui.unmarkTextAreaError(); })
 	}
 
 	const init = () => {
-		addEventListener();
+		addEventListeners();
 	};
 
 	return {

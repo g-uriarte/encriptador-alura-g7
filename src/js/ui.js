@@ -38,7 +38,7 @@ const ui = () => {
 	const addEventListenerToCopyButton = () => {
 		getCopyButton().addEventListener("click", () => {
 			const resultText = document.getElementById("result-text");
-            const text = resultText.innerHTML;
+			const text = resultText.innerHTML;
 			if (navigator.clipboard) {
 				navigator.clipboard
 					.writeText(text)
@@ -90,6 +90,12 @@ const ui = () => {
 		textarea.classList.add("input-error");
 	};
 
+	const unmarkTextAreaError = () => {
+		if (textarea.classList.contains("input-error")) {
+			textarea.classList.remove("input-error");
+		}
+	};
+
 	return {
 		textarea,
 		buttonDecript,
@@ -100,6 +106,7 @@ const ui = () => {
 		checkInteraction,
 		updateResponseContainer,
 		markTextAreaError,
+		unmarkTextAreaError
 	};
 };
 
