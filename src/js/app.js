@@ -1,11 +1,11 @@
-import { UI } from "./ui.js";
-import { challengeEncryptionMode } from "./encriptador.js";
-import { Toast } from './toast.js'
+import { UI } from './ui.js';
+import { challengeEncryptionMode } from './encriptador.js';
+import { Toast } from './toast.js';
 
 /**
  *
  * @param {UI} ui
- * @param {challengeEncryptionMode} encryptionMode 
+ * @param {challengeEncryptionMode} encryptionMode
  * @returns
  */
 const app = (ui, encryptionMode) => {
@@ -17,15 +17,16 @@ const app = (ui, encryptionMode) => {
 		if (text === '') {
 			return {
 				error: true,
-				message: 'Por favor introduzca un texto.'
-			}
+				message: 'Por favor introduzca un texto.',
+			};
 		}
 
 		const hasValidText = /^[a-z0-9]+$/g.test(text);
 		if (!hasValidText) {
 			return {
 				error: true,
-				message: 'Por favor solo introduzca letras minúsculas, sin acentos y sin caracteres especiales.',
+				message:
+					'Por favor solo introduzca letras minúsculas, sin acentos y sin caracteres especiales.',
 			};
 		}
 		return {
@@ -42,9 +43,12 @@ const app = (ui, encryptionMode) => {
 		const { error, message } = validateText(text);
 		if (error) {
 			ui.markTextAreaError();
-			Toast.create(message, 'error')
+			Toast.create(message, 'error');
 		} else {
-			const resultText = type === 'encript' ? encryptionMode.encript(text) : encryptionMode.decript(text);
+			const resultText =
+				type === 'encript'
+					? encryptionMode.encript(text)
+					: encryptionMode.decript(text);
 			if (!ui.hasInteraction()) {
 				ui.checkInteraction();
 				ui.updateResponseContainer();
@@ -54,10 +58,16 @@ const app = (ui, encryptionMode) => {
 	};
 
 	const addEventListeners = () => {
-		ui.buttonEncript.addEventListener("click", () => { handleAction('encript'); });
-		ui.buttonDecript.addEventListener("click", () => { handleAction('decript'); });
-		ui.textarea.addEventListener('input', () => { ui.unmarkTextAreaError(); })
-	}
+		ui.buttonEncript.addEventListener('click', () => {
+			handleAction('encript');
+		});
+		ui.buttonDecript.addEventListener('click', () => {
+			handleAction('decript');
+		});
+		ui.textarea.addEventListener('input', () => {
+			ui.unmarkTextAreaError();
+		});
+	};
 
 	const init = () => {
 		addEventListeners();

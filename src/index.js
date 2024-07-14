@@ -1,2 +1,2 @@
-import { App } from './js/app.js'
+import { App } from "./js/app.js";
 App.init();

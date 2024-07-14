@@ -3,11 +3,11 @@
  */
 const characterToEncriptedText = new Map();
 
-characterToEncriptedText.set("a", "ai");
-characterToEncriptedText.set("e", "enter");
-characterToEncriptedText.set("i", "imes");
-characterToEncriptedText.set("o", "ober");
-characterToEncriptedText.set("u", "ufat");
+characterToEncriptedText.set('a', 'ai');
+characterToEncriptedText.set('e', 'enter');
+characterToEncriptedText.set('i', 'imes');
+characterToEncriptedText.set('o', 'ober');
+characterToEncriptedText.set('u', 'ufat');
 
 /**
  * it's convert the character into asociated text.
@@ -24,12 +24,14 @@ const convertCharacterToEncriptedText = (character) => {
  */
 const encript = (text) => {
 	let characters = text.split('');
-	let textEncripted = characters.map((character) => {
-        if (characterToEncriptedText.has(character)) {
-            return convertCharacterToEncriptedText(character)
-        }
-        return character;
-    }).join('');
+	let textEncripted = characters
+		.map((character) => {
+			if (characterToEncriptedText.has(character)) {
+				return convertCharacterToEncriptedText(character);
+			}
+			return character;
+		})
+		.join('');
 
 	return textEncripted;
 };
@@ -41,7 +43,7 @@ const encript = (text) => {
 const decript = (text) => {
 	let textDecripted = [];
 	let letter = '';
-	for (let index = 0; index < text.length;) {
+	for (let index = 0; index < text.length; ) {
 		letter = text[index];
 		if (characterToEncriptedText.has(letter)) {
 			const text = characterToEncriptedText.get(letter);
