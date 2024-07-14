@@ -21,7 +21,7 @@ const app = (ui, encryptionMode) => {
 			}
 		}
 
-		const hasValidText = /^[a-z]+$/g.test(text);
+		const hasValidText = /^[a-z0-9]+$/g.test(text);
 		if (!hasValidText) {
 			return {
 				error: true,
